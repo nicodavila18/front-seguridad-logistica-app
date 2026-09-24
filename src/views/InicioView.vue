@@ -2,10 +2,10 @@
   <div class="w-full max-w-5xl mx-auto pb-12 font-sans">
     
     <!-- Encabezado con estilo Industrial -->
-    <div class="mb-10 pb-6 border-b-4 border-slate-900 flex justify-between items-end">
+    <div class="mb-10 pb-6 border-b-4 border-slate-900 flex justify-between items-end pr-14 md:pr-0">
       <div>
-        <h1 class="text-4xl font-black text-slate-900 tracking-tight uppercase mb-1">Panel de Operario</h1>
-        <p class="text-slate-600 font-bold text-lg">LUCAS DÁVILA • PLANTA SUR</p>
+        <h1 class="text-3xl sm:text-4xl font-black text-slate-900 uppercase tracking-tighter mb-1 leading-none">Panel de Operario</h1>
+        <p class="text-slate-600 font-bold text-sm sm:text-lg mt-2">LUCAS DÁVILA • PLANTA SUR</p>
       </div>
       <div class="hidden sm:block text-right">
         <p class="text-xs font-bold text-slate-500 tracking-widest uppercase">Certificación</p>
