@@ -3,25 +3,37 @@
   <div class="min-h-[100dvh] flex flex-col md:flex-row font-sans selection:bg-slate-900 selection:text-emerald-400">
     
     <!-- MITAD IZQUIERDA: Branding Industrial (Ahora en Verde) -->
-    <div class="w-full md:w-1/2 bg-emerald-400 border-b-4 md:border-b-0 md:border-r-4 border-slate-900 p-8 md:p-16 flex flex-col justify-between relative overflow-hidden">
-      <!-- Decoración Cinta Adhesiva -->
-      <div class="absolute -top-10 -right-10 w-40 h-12 bg-slate-900 rotate-45 opacity-20"></div>
-      <div class="absolute bottom-20 -left-10 w-40 h-12 bg-slate-900 -rotate-12 opacity-20"></div>
+    <!-- MITAD IZQUIERDA: Branding Industrial (Optimizada para Móvil) -->
+    <div class="w-full md:w-1/2 bg-emerald-400 border-b-4 md:border-b-0 md:border-r-4 border-slate-900 p-6 md:p-16 flex flex-col justify-center md:justify-between relative overflow-hidden">
+      
+      <!-- Decoración Cinta Adhesiva (Oculta en móvil para no ensuciar visualmente) -->
+      <div class="hidden md:block absolute -top-10 -right-10 w-40 h-12 bg-slate-900 rotate-45 opacity-20"></div>
+      <div class="hidden md:block absolute bottom-20 -left-10 w-40 h-12 bg-slate-900 -rotate-12 opacity-20"></div>
 
-      <div>
-        <div class="w-16 h-16 bg-white border-4 border-slate-900 flex items-center justify-center shadow-[6px_6px_0_0_#0f172a] mb-8">
-          <svg class="w-10 h-10 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      <!-- Contenedor flex: Fila en móvil (ahorra altura), Columna en PC -->
+      <div class="flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
+        
+        <!-- Logo más chico en celular -->
+        <div class="w-12 h-12 md:w-16 md:h-16 shrink-0 bg-white border-4 border-slate-900 flex items-center justify-center shadow-[4px_4px_0_0_#0f172a] md:shadow-[6px_6px_0_0_#0f172a] md:mb-8">
+          <svg class="w-6 h-6 md:w-10 md:h-10 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
         </div>
-        <h1 class="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none mb-4">
-          Seguridad<br>Logística
-        </h1>
-        <p class="text-slate-900 font-bold text-lg md:text-xl uppercase tracking-widest border-l-4 border-slate-900 pl-4">
-          Plataforma de Inducción<br>y Certificación Operativa
-        </p>
+        
+        <!-- Textos dinámicos -->
+        <div>
+          <!-- El título se pone en una sola línea en celular y salta de línea en PC -->
+          <h1 class="text-2xl sm:text-3xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none md:mb-4">
+            Seguridad<span class="inline md:hidden"> </span><br class="hidden md:block"> Logística
+          </h1>
+          
+          <!-- Subtítulo oculto en móvil -->
+          <p class="hidden md:block text-slate-900 font-bold text-lg md:text-xl uppercase tracking-widest border-l-4 border-slate-900 pl-4">
+            Plataforma de Inducción<br>y Certificación Operativa
+          </p>
+        </div>
       </div>
 
-      <!-- Código de barras falso -->
-      <div class="mt-12 w-full max-w-xs h-16 border-t-4 border-slate-900 flex items-center justify-center" 
+      <!-- Código de barras falso (Oculto en móvil) -->
+      <div class="hidden md:flex mt-12 w-full max-w-xs h-16 border-t-4 border-slate-900 items-center justify-center" 
            style="background: repeating-linear-gradient(90deg, #0f172a, #0f172a 4px, transparent 4px, transparent 8px, #0f172a 8px, #0f172a 14px, transparent 14px, transparent 18px);">
       </div>
     </div>
