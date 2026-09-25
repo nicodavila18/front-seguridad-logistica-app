@@ -34,15 +34,37 @@
       
     </nav>
 
-    <!-- Perfil -->
-    <div class="mt-auto pt-6 border-t-4 border-slate-900 flex items-center gap-4">
-      <div class="w-12 h-12 bg-indigo-500 border-2 border-slate-900 flex items-center justify-center text-white font-black shadow-[3px_3px_0_0_#0f172a]">
-        LD
+    <!-- Perfil y Botón de Salida -->
+      <div class="mt-auto pt-6 border-t-4 border-slate-900 flex items-center justify-between">
+        
+        <!-- Info del Usuario -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-indigo-500 border-2 border-slate-900 flex items-center justify-center shadow-[2px_2px_0_0_#0f172a] text-white font-black">
+            LD
+          </div>
+          <div class="flex flex-col">
+            <span class="text-sm font-black text-slate-900 uppercase tracking-tight">Lucas Dávila</span>
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Desarrollo</span>
+          </div>
+        </div>
+
+        <!-- Botón Cerrar Sesión (Power) -->
+        <button @click="cerrarSesion" class="text-slate-400 hover:text-red-500 hover:scale-110 transition-transform cursor-pointer" title="Cerrar Sesión">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636a9 9 0 11-12.728 0M12 3v9" />
+          </svg>
+        </button>
+
       </div>
-      <div class="flex flex-col">
-        <span class="text-sm font-black text-slate-900 uppercase tracking-tight">Lucas Dávila</span>
-        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Desarrollo</span>
-      </div>
-    </div>
   </aside>
 </template>
+
+<script setup>
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+const cerrarSesion = () => {
+  localStorage.removeItem('rolUsuario')
+  router.push('/login')
+}
+</script>

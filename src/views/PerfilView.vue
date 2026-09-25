@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full max-w-6xl mx-auto pb-12 font-sans relative">
+  <div class="w-full max-w-7xl mx-auto pb-12 font-sans relative px-2 xl:px-0">
     
     <!-- Encabezado de Sección -->
     <div class="mb-10 border-b-4 border-slate-900 pb-4 flex justify-between items-end">
@@ -58,7 +58,7 @@
         <div class="bg-white border-4 border-slate-900 p-6 sm:p-8 shadow-[8px_8px_0_0_#0f172a]">
           <h3 class="text-xl font-black text-slate-900 uppercase tracking-widest mb-6">Colección de Certificados</h3>
           
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
             
             <!-- Certificado Aprobado (Estilo Sello/Badge) -->
             <div class="bg-emerald-50 border-4 border-slate-900 p-5 flex flex-col justify-between shadow-[4px_4px_0_0_#0f172a] hover:-translate-y-1 hover:shadow-[6px_6px_0_0_#0f172a] transition-all group">

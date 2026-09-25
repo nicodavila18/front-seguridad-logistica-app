@@ -1,10 +1,10 @@
 <template>
-  <div class="w-full max-w-4xl mx-auto pb-12 font-sans">
+  <div class="w-full max-w-7xl mx-auto pb-12 font-sans px-2 xl:px-0">
     
     <!-- Encabezado Global del Simulador -->
     <div class="mb-8 border-b-4 border-slate-900 pb-4 flex justify-between items-end">
       <div>
-        <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter">Campo de Práctica</h2>
+        <h2 class="text-4xl font-black text-slate-900 uppercase tracking-tighter">Campo de Práctica</h2>
         <p class="text-slate-600 font-bold uppercase tracking-widest text-sm mt-1">Entrenamiento sin impacto en certificación</p>
       </div>
       <span v-if="fase === 'jugando'" class="bg-indigo-500 text-white font-black px-3 py-1 border-2 border-slate-900 shadow-[3px_3px_0_0_#0f172a] text-xs uppercase tracking-widest hidden sm:inline-block">
@@ -14,7 +14,7 @@
 
     <!-- FASE 1: LOBBY DE SELECCIÓN -->
     <div v-if="fase === 'seleccion'" class="animate-fade-in">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 xl:gap-8">
         
         <!-- Tarjeta de Selección de Módulo -->
         <button 

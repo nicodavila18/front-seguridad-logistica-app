@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full max-w-5xl mx-auto pb-12 font-sans">
+  <div class="w-full max-w-7xl mx-auto pb-12 font-sans px-2 xl:px-0">
     
     <!-- Encabezado con estilo Industrial -->
     <div class="mb-10 pb-6 border-b-4 border-slate-900 flex justify-between items-end pr-14 md:pr-0">

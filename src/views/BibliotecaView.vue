@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full max-w-5xl mx-auto pb-12 font-sans">
+  <div class="w-full max-w-7xl mx-auto pb-12 font-sans px-2 xl:px-0">
     
     <!-- Encabezado -->
     <div class="mb-10 border-b-4 border-slate-900 pb-4 flex justify-between items-end">
@@ -38,7 +38,7 @@
     </div>
 
     <!-- Grilla de Documentos -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 xl:gap-8">
       
       <!-- Mensaje si no hay resultados -->
       <div v-if="documentosFiltrados.length === 0" class="col-span-full bg-slate-100 border-4 border-slate-900 p-10 text-center shadow-[6px_6px_0_0_#0f172a]">
