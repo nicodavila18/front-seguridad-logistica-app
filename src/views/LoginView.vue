@@ -120,7 +120,7 @@ const iniciarSesion = async () => {
     params.append('username', email.value) // FastAPI exige que el campo se llame 'username'
     params.append('password', password.value)
 
-    const response = await fetch('http://localhost:8000/token', {
+    const response = await fetch('https://back-seguridad-logistica-app.onrender.com/token', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'

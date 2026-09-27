@@ -104,7 +104,7 @@ const generarPreguntasIA = async () => {
   
   try {
     // Le avisamos a FastAPI que despierte a n8n
-    await fetch('http://localhost:8000/test-ia', {
+    await fetch('https://back-seguridad-logistica-app.onrender.com/test-ia', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -129,7 +129,7 @@ const generarPreguntasIA = async () => {
 // 2. Función para traer las preguntas ya guardadas en PostgreSQL
 const cargarPreguntasAuditadas = async () => {
   try {
-    const response = await fetch('http://localhost:8000/modulos/1/preguntas')
+    const response = await fetch('https://back-seguridad-logistica-app.onrender.com/modulos/1/preguntas')
     if (response.ok) {
       preguntas.value = await response.json()
     }
