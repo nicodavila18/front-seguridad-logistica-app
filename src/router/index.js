@@ -15,21 +15,24 @@ const router = createRouter({
       meta: { rolesPermitidos: ['operario', 'rrhh', 'admin'] },
       children: [
         { path: '', name: 'inicio', component: () => import('../views/InicioView.vue') },
-        { path: 'simulador', name: 'simulador', component: () => import('../views/SimuladorView.vue') },
+        // NUEVA RUTA DEL LOBBY:
+        { path: 'modulo/:id', name: 'modulo-lobby', component: () => import('../views/ModuloLobbyView.vue') },
+        
         { path: 'biblioteca', name: 'biblioteca', component: () => import('../views/BibliotecaView.vue') },
-        { path: 'perfil', name: 'perfil', component: () => import('../views/PerfilView.vue') },
-        { path: 'evaluacion', name: 'evaluacion', component: () => import('../views/EvaluacionView.vue') }
+        { path: 'perfil', name: 'perfil', component: () => import('../views/PerfilView.vue') }
       ]
     },
     {
       path: '/admin',
       component: () => import('../layouts/AdminLayout.vue'),
-      // Solo RRHH y Admin pueden entrar a Gestión
       meta: { rolesPermitidos: ['rrhh', 'admin'] },
       children: [
         { path: '', name: 'admin-dashboard', component: () => import('../views/admin/DashboardView.vue') },
         { path: 'capacitaciones', name: 'admin-capacitaciones', component: () => import('../views/admin/CapacitacionesView.vue') },
-        // SOLO Admin puede entrar a Usuarios (TI)
+        
+        // NUEVA RUTA PARA EL EDITOR
+        { path: 'editor-evaluacion/:id', name: 'admin-editor-evaluacion', component: () => import('../views/admin/EditorEvaluacionView.vue') },
+        
         { 
           path: 'usuarios', 
           name: 'admin-usuarios', 

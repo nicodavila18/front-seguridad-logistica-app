@@ -29,7 +29,7 @@
           <p class="text-xs font-black text-slate-500 uppercase tracking-widest">Módulos Activos</p>
           <svg class="w-6 h-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
         </div>
-        <p class="text-5xl font-black text-slate-900">14</p>
+        <p class="text-5xl font-black text-slate-900">{{ cantidadModulosActivos }}</p>
       </div>
 
       <!-- KPI 3 (Alerta) -->
@@ -121,3 +121,22 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+
+const cantidadModulosActivos = ref(14) // Empieza en 14 por defecto para que no se vea vacío
+
+onMounted(async () => {
+  try {
+    const response = await fetch('http://127.0.0.1:8000/api/modulos')
+    if (response.ok) {
+      const todosLosModulos = await response.json()
+      // Filtramos solo los que están publicados (no borradores)
+      cantidadModulosActivos.value = todosLosModulos.filter(m => m.is_active).length
+    }
+  } catch (error) {
+    console.error("Error al cargar KPIs:", error)
+  }
+})
+</script>

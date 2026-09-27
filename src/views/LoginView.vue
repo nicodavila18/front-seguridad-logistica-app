@@ -68,6 +68,10 @@
             >
           </div>
 
+          <p v-if="mensajeError" class="text-red-500 font-bold text-xs uppercase tracking-widest mt-2 border-l-4 border-red-500 pl-2">
+            {{ mensajeError }}
+          </p>
+          
           <button 
             type="submit" 
             class="w-full bg-slate-900 text-white mt-4 py-4 border-4 border-slate-900 font-black text-xl uppercase tracking-widest shadow-[6px_6px_0_0_#cbd5e1] hover:bg-slate-800 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#cbd5e1] transition-all"
@@ -105,24 +109,55 @@ const router = useRouter()
 const email = ref('')
 const password = ref('')
 const rolSeleccionado = ref('operario')
+const mensajeError = ref('') // Para mostrar si se equivocan la clave
 
-const iniciarSesion = () => {
-  // 1. Guardamos el rol en la memoria del navegador
-  localStorage.setItem('rolUsuario', rolSeleccionado.value)
+const iniciarSesion = async () => {
+  mensajeError.value = ''
   
-  // 2. Redirigimos según el rol
-  if (rolSeleccionado.value === 'operario') {
-    router.push('/')
-  } else {
-    router.push('/admin')
+  try {
+    // FastAPI espera los datos en formato "Formulario" (x-www-form-urlencoded), NO JSON.
+    const params = new URLSearchParams()
+    params.append('username', email.value) // FastAPI exige que el campo se llame 'username'
+    params.append('password', password.value)
+
+    const response = await fetch('http://localhost:8000/token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: params
+    })
+
+    if (!response.ok) {
+      mensajeError.value = 'Credenciales incorrectas. Intente nuevamente.'
+      return
+    }
+
+    const data = await response.json()
+    
+    // Guardamos el token y el rol REAL que nos devuelve la base de datos
+    localStorage.setItem('token', data.access_token)
+    localStorage.setItem('rolUsuario', data.rol)
+    localStorage.setItem('usuarioId', data.usuario_id)
+    
+    // Redirigimos
+    if (data.rol === 'operario') {
+      router.push('/')
+    } else {
+      router.push('/admin')
+    }
+  } catch (error) {
+    mensajeError.value = 'Error al conectar con el servidor.'
+    console.error(error)
   }
 }
 
+// Mantenemos los botones de demo para tu portfolio
 const accesoRapido = (rol) => {
-  rolSeleccionado.value = rol
   email.value = `${rol}@empresa.com`
   password.value = 'demo1234'
   
+  // Pequeño delay visual antes de mandar la petición real
   setTimeout(() => {
     iniciarSesion()
   }, 400)

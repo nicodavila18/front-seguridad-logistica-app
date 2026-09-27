@@ -76,26 +76,49 @@ const cerrarSesion = () => {
     <div class="flex-1 flex flex-col min-w-0 relative">
       
       <!-- Topbar Administrativo -->
-      <header class="h-20 bg-white border-b-4 border-slate-900 flex items-center justify-between px-8 z-10 w-full sticky top-0 shadow-sm">
-        <div class="text-slate-900 font-black uppercase tracking-widest text-lg">
-          Panel de Control
+      <header class="h-16 md:h-20 bg-white border-b-4 border-slate-900 flex items-center justify-between px-4 sm:px-8 z-10 w-full sticky top-0 shadow-sm">
+        <div class="text-slate-900 font-black uppercase tracking-widest text-sm md:text-lg">
+          Panel <span class="hidden sm:inline">de Control</span>
         </div>
         
-        <div class="flex items-center gap-6">
-          
-          <!-- Botón Volver a App Operativa (Movido de abajo hacia arriba) -->
-          <router-link to="/" class="px-4 py-2 bg-yellow-300 text-slate-900 border-2 border-slate-900 font-black text-xs uppercase tracking-widest shadow-[3px_3px_0_0_#0f172a] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[5px_5px_0_0_#0f172a] hover:bg-yellow-400 transition-all flex items-center gap-2">
+        <div class="flex items-center gap-2 sm:gap-6">
+          <router-link to="/" class="px-2 sm:px-4 py-2 bg-yellow-300 text-slate-900 border-2 border-slate-900 font-black text-[10px] sm:text-xs uppercase tracking-widest shadow-[2px_2px_0_0_#0f172a] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[4px_4px_0_0_#0f172a] transition-all flex items-center gap-1 sm:gap-2">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-            Volver a App
+            <span class="hidden sm:inline">Volver a App</span>
+            <span class="sm:hidden">App</span>
           </router-link>
 
+          <!-- Botón Cerrar Sesión Móvil (Solo visible en celular porque en PC está en el menú verde) -->
+          <button @click="cerrarSesion" class="md:hidden bg-white p-2 border-2 border-slate-900 text-red-600 shadow-[2px_2px_0_0_#0f172a] active:translate-y-px active:shadow-none transition-all">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636a9 9 0 11-12.728 0M12 3v9" /></svg>
+          </button>
         </div>
       </header>
 
-      <!-- Contenido Principal -->
-      <main class="flex-1 overflow-y-auto p-4 sm:p-8 md:p-10 scroll-smooth">
+      <!-- Contenido Principal (Aumentamos el padding bottom a pb-28 para que no lo tape el nuevo menú móvil) -->
+      <main class="flex-1 overflow-y-auto p-4 sm:p-8 md:p-10 pb-28 md:pb-10 scroll-smooth">
         <router-view></router-view>
       </main>
+
+      <!-- BOTTOM NAV ADMIN (Solo Móvil) -->
+      <nav class="md:hidden fixed bottom-0 left-0 w-full bg-emerald-500 border-t-4 border-slate-900 flex z-40">
+        <router-link to="/admin" exact-active-class="bg-white shadow-[inset_0_4px_0_0_#0f172a]" class="flex-1 border-r-2 border-slate-900 py-3 flex flex-col items-center gap-1 text-slate-900 transition-colors">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+          <span class="text-[9px] font-black uppercase tracking-widest">Métricas</span>
+        </router-link>
+        
+        <router-link to="/admin/capacitaciones" active-class="bg-white shadow-[inset_0_4px_0_0_#0f172a]" class="flex-1 border-r-2 border-slate-900 py-3 flex flex-col items-center gap-1 text-slate-900 transition-colors">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15M9 11l3 3m0 0l3-3m-3 3V8"/></svg>
+          <span class="text-[9px] font-black uppercase tracking-widest">Módulos</span>
+        </router-link>
+        
+        <!-- Pestaña de TI protegida por Rol -->
+        <router-link v-if="rolUsuario === 'admin'" to="/admin/usuarios" active-class="bg-white shadow-[inset_0_4px_0_0_#0f172a]" class="flex-1 py-3 flex flex-col items-center gap-1 text-slate-900 transition-colors">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <span class="text-[9px] font-black uppercase tracking-widest">Sistema</span>
+        </router-link>
+      </nav>
+
     </div>
 
   </div>
