@@ -79,7 +79,7 @@ let intervaloIA = null
 // Función que consulta al backend
 const cargarPreguntas = async () => {
   try {
-    const res = await fetch(`http://127.0.0.1:8000/api/modulos/${moduloId}/preguntas`)
+    const res = await fetch(`https://back-seguridad-logistica-app.onrender.com/api/modulos/${moduloId}/preguntas`)
     const data = await res.json()
     
     // Si ya llegaron las preguntas de n8n o si ya existían de antes
@@ -129,7 +129,7 @@ const eliminarPregunta = (index) => {
 
 const publicarModulo = async () => {
   try {
-    await fetch(`http://127.0.0.1:8000/api/modulos/${moduloId}/activar`, {
+    await fetch(`https://back-seguridad-logistica-app.onrender.com/api/modulos/${moduloId}/activar`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ preguntas: preguntas.value })

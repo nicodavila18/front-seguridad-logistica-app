@@ -243,7 +243,7 @@ const manualesDisponibles = ref([])
 // 1. Cargar manuales al abrir la pantalla
 const cargarManuales = async () => {
   try {
-    const response = await fetch('http://127.0.0.1:8000/manuales')
+    const response = await fetch('https://back-seguridad-logistica-app.onrender.com/manuales')
     if (response.ok) {
       manualesDisponibles.value = await response.json()
     }
@@ -261,7 +261,7 @@ const listaModulos = ref([])
 
 const cargarModulos = async () => {
   try {
-    const response = await fetch('http://127.0.0.1:8000/api/modulos')
+    const response = await fetch('https://back-seguridad-logistica-app.onrender.com/api/modulos')
     if (response.ok) {
       listaModulos.value = await response.json()
     }
@@ -280,7 +280,7 @@ const eliminarModulo = async (id) => {
   if (!confirm("¿Seguro que deseas eliminar este módulo y todas sus preguntas? Esta acción es irreversible.")) return
   
   try {
-    await fetch(`http://127.0.0.1:8000/api/modulos/${id}`, { method: 'DELETE' })
+    await fetch(`https://back-seguridad-logistica-app.onrender.com/api/modulos/${id}`, { method: 'DELETE' })
     cargarModulos() // Recargamos la lista para que desaparezca
   } catch (error) {
     console.error("Error al eliminar módulo:", error)
@@ -303,7 +303,7 @@ const manejarSubidaArchivo = async (event) => {
   formData.append('file', file)
 
   try {
-    const response = await fetch('http://127.0.0.1:8000/upload-pdf', {
+    const response = await fetch('https://back-seguridad-logistica-app.onrender.com/upload-pdf', {
       method: 'POST',
       body: formData
     })
@@ -324,7 +324,7 @@ const eliminarManual = async (id) => {
   if (!confirm("¿Seguro que deseas eliminar este manual de la biblioteca?")) return
   
   try {
-    const response = await fetch(`http://127.0.0.1:8000/manuales/${id}`, { 
+    const response = await fetch(`https://back-seguridad-logistica-app.onrender.com/manuales/${id}`, { 
       method: 'DELETE' 
     })
     
@@ -340,7 +340,7 @@ const eliminarManual = async (id) => {
 // 3. Lógica para Crear el Módulo
 const crearModulo = async (metodo) => {
   try {
-    const responseCreacion = await fetch('http://127.0.0.1:8000/api/modulos', {
+    const responseCreacion = await fetch('https://back-seguridad-logistica-app.onrender.com/api/modulos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -359,7 +359,7 @@ const crearModulo = async (metodo) => {
        // Calculamos el pool total necesario sumando las reglas del lobby
        const poolTotalPreguntas = nuevoModulo.value.cant_preguntas_practica + nuevoModulo.value.cant_preguntas_evaluacion
 
-       await fetch('http://127.0.0.1:8000/api/generar-evaluacion', {
+       await fetch('https://back-seguridad-logistica-app.onrender.com/api/generar-evaluacion', {
          method: 'POST',
          headers: { 'Content-Type': 'application/json' },
          body: JSON.stringify({

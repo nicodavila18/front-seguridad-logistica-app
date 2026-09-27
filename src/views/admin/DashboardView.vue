@@ -129,7 +129,7 @@ const cantidadModulosActivos = ref(14) // Empieza en 14 por defecto para que no 
 
 onMounted(async () => {
   try {
-    const response = await fetch('http://127.0.0.1:8000/api/modulos')
+    const response = await fetch('https://back-seguridad-logistica-app.onrender.com/api/modulos')
     if (response.ok) {
       const todosLosModulos = await response.json()
       // Filtramos solo los que están publicados (no borradores)

@@ -193,12 +193,12 @@ const bloquearOpciones = computed(() => mostrarRetroalimentacion.value)
 onMounted(async () => {
   try {
     // A. Buscamos la info del módulo (Deberás asegurarte de tener un endpoint GET /api/modulos/{id} en FastAPI)
-    const resMod = await fetch('http://127.0.0.1:8000/api/modulos')
+    const resMod = await fetch('https://back-seguridad-logistica-app.onrender.com/api/modulos')
     const todos = await resMod.json()
     modulo.value = todos.find(m => m.id == moduloId)
     
     // B. Buscamos todas las preguntas de este módulo
-    const resPreg = await fetch(`http://127.0.0.1:8000/api/modulos/${moduloId}/preguntas`)
+    const resPreg = await fetch(`https://back-seguridad-logistica-app.onrender.com/api/modulos/${moduloId}/preguntas`)
     bancoPreguntas.value = await resPreg.json()
     
   } catch (error) {
@@ -262,7 +262,7 @@ const avanzarPregunta = async () => {
         // Asumimos 1 temporalmente para que no falle la prueba.
         const usuarioId = localStorage.getItem('usuarioId') || 1; 
 
-        await fetch('http://127.0.0.1:8000/api/certificaciones', {
+        await fetch('https://back-seguridad-logistica-app.onrender.com/api/certificaciones', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

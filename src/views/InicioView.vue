@@ -72,7 +72,7 @@ const cargando = ref(true)
 
 const cargarModulos = async () => {
   try {
-    const response = await fetch('http://127.0.0.1:8000/api/modulos')
+    const response = await fetch('https://back-seguridad-logistica-app.onrender.com/api/modulos')
     const todosLosModulos = await response.json()
     // Solo mostramos los módulos que RRHH ya marcó como "Activos/Publicados"
     modulosActivos.value = todosLosModulos.filter(m => m.is_active === true)

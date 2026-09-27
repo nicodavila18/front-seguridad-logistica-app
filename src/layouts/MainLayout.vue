@@ -46,7 +46,7 @@ const enviarMensaje = async () => {
   const indexTemporal = historial.value.push({ rol: 'ia', texto: 'Analizando manuales oficiales...' }) - 1
 
   try {
-    const response = await fetch('http://127.0.0.1:8000/api/chat-asistente', {
+    const response = await fetch('https://back-seguridad-logistica-app.onrender.com/api/chat-asistente', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ pregunta: textoPregunta })
