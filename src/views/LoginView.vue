@@ -22,7 +22,7 @@
         <div>
           <!-- El título se pone en una sola línea en celular y salta de línea en PC -->
           <h1 class="text-2xl sm:text-3xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter leading-none md:mb-4">
-            Seguridad<span class="inline md:hidden"> </span><br class="hidden md:block"> Logística
+            Seguridad
           </h1>
           
           <!-- Subtítulo oculto en móvil -->

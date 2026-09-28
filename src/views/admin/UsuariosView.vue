@@ -8,7 +8,7 @@
         <p class="text-slate-500 font-bold text-lg uppercase tracking-widest">Directorio General de Empleados</p>
       </div>
       <div class="bg-indigo-500 text-white px-4 py-2 border-4 border-slate-900 font-black uppercase tracking-widest shadow-[4px_4px_0_0_#0f172a]">
-        Acceso Nivel Dios (TI)
+        Acceso Nivel Dios
       </div>
     </div>
 
