@@ -153,16 +153,19 @@ const enviarMensaje = async () => {
       <button 
         v-show="!chatAbierto"
         @click="chatAbierto = true" 
-        class="w-16 h-16 bg-yellow-300 border-4 border-slate-900 flex items-center justify-center shadow-[6px_6px_0_0_#0f172a] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0_0_#0f172a] transition-all group relative"
+        class="group flex items-center gap-0 cursor-pointer focus:outline-none"
       >
-        <!-- Tooltip Asistente IA -->
-        <span class="absolute right-full mr-4 bg-slate-900 text-white text-[10px] font-black uppercase tracking-widest px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+        <!-- Cartel lateral con el mismo estilo del Panel -->
+        <span class="bg-slate-900 text-white text-[10px] font-black uppercase tracking-widest px-3 py-2 border-y-2 border-l-2 border-slate-900 opacity-0 group-hover:opacity-100 transition-all translate-x-2 group-hover:translate-x-0 hidden sm:block relative z-0">
           Asistente IA
         </span>
-
-        <svg class="w-8 h-8 text-slate-900 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-        </svg>
+        
+        <!-- Caja principal del botón -->
+        <div class="w-16 h-16 bg-yellow-300 border-4 border-slate-900 flex items-center justify-center shadow-[6px_6px_0_0_#0f172a] group-hover:-translate-y-1 group-hover:-translate-x-1 group-hover:shadow-[8px_8px_0_0_#0f172a] transition-all relative z-10">
+          <svg class="w-8 h-8 text-slate-900 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+          </svg>
+        </div>
       </button>
     </div>
 
